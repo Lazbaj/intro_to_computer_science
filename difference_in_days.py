@@ -7,13 +7,19 @@
 # time travel). 
 #
 
+def is_leap_year(year):
+	if (year%4==0) and not ((year%100==0) and not (year%400==0)):
+		return True
+	else:
+		return False
+
 def daysUpToDate(year,month,day):
 	i=1
 	while i<month:
 		if i in (4,6,9,11):
 			day=day+30
 		if i==2:
-			if year%4==0:
+			if is_leap_year(year):
 				day=day+29
 			else:
 				day=day+28
@@ -23,8 +29,8 @@ def daysUpToDate(year,month,day):
 	return day
 
 # TEST BY LAZ
-print daysUpToDate(2011, 6, 30)
-print daysUpToDate(2012, 6, 30)
+# print daysUpToDate(2011, 6, 30)
+# print daysUpToDate(2012, 6, 30)
 
 def daysBetweenDates(year1, month1, day1, year2, month2, day2):
 	days1=year1*365.25+daysUpToDate(year1,month1,day1)
@@ -32,7 +38,7 @@ def daysBetweenDates(year1, month1, day1, year2, month2, day2):
 	return int(days2-days1)
 
 # TEST BY LAZ
-daysBetweenDates(1983,5,16,2016,5,14)
+# daysBetweenDates(1983,5,16,2016,5,14)
 
 # Test routine
 
